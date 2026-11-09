@@ -10,6 +10,7 @@ Type=simple
 User=mcp-toolbox
 Group=mcp-toolbox
 WorkingDirectory=/var/lib/mcp-toolbox
+EnvironmentFile=-/etc/mcp-toolbox/toolbox.env
 ExecStart=/opt/mcp-toolbox/current --config /etc/mcp-toolbox/tools.yaml --address 127.0.0.1 --port 15000 --ui --allowed-hosts mcp-toolbox.clawtools.cc --allowed-origins https://mcp-toolbox.clawtools.cc --toolbox-url https://mcp-toolbox.clawtools.cc --disable-version-check --logging-format JSON
 Restart=on-failure
 RestartSec=5

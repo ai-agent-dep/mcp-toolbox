@@ -49,6 +49,11 @@ SSH 密码保存在 macOS 登录钥匙串，服务项为 `ssh://61.184.12.13:343
 
 ## 运维
 
+日常新增/修改/删除 Source、SQL Tool 和工具组，参见
+[配置操作说明](CONFIGURATION.md)。服务器已接入可选的
+`/etc/mcp-toolbox/toolbox.env`（`root:root 0600`），用于保存数据库环境变量。
+原生配置校验入口：`/opt/mcp-toolbox/deploy/check-config.py`。
+
 以下命令在服务器执行：
 
 ```bash
@@ -57,8 +62,9 @@ journalctl -u mcp-toolbox -n 100 --no-pager
 curl -fsS http://127.0.0.1:15000/healthz
 ```
 
-配置更新：先备份 `/etc/mcp-toolbox/tools.yaml`，安装新配置后执行
-`systemctl restart mcp-toolbox`，再验证健康检查、MCP 初始化和预期工具列表。
+配置更新：先备份并校验候选，再原子替换 `/etc/mcp-toolbox/tools.yaml`。
+已实测默认热重载；环境变量修改需要 `systemctl restart mcp-toolbox`。
+应用后验证健康检查、MCP 初始化、预期工具及组列表，失败恢复本次备份。
 空配置存储格式是上游兼容格式，后续可按上游规范迁移。
 
 服务单元更新后执行：

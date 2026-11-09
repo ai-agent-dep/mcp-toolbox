@@ -27,3 +27,8 @@ mcp-toolbox
 toolbox
 toolbox.exe
 **/test.db
+
+# Deployment credentials and working copies (only examples belong in Git).
+deploy/clawtools/*.env
+deploy/clawtools/*.candidate.yaml
+deploy/clawtools/*.bak

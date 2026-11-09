@@ -1,0 +1,49 @@
+# Reference only. Not loaded by the service. Supply real environment variables first.
+# Flat multi-document format supported by the deployed v1.16.0.
+kind: source
+name: pg_business
+type: postgres
+host: ${PG_BUSINESS_HOST}
+port: ${PG_BUSINESS_PORT}
+database: ${PG_BUSINESS_DATABASE}
+user: ${PG_BUSINESS_USER}
+password: ${PG_BUSINESS_PASSWORD}
+---
+kind: source
+name: pg_reporting
+type: postgres
+host: ${PG_REPORTING_HOST}
+port: ${PG_REPORTING_PORT}
+database: ${PG_REPORTING_DATABASE}
+user: ${PG_REPORTING_USER}
+password: ${PG_REPORTING_PASSWORD}
+---
+kind: source
+name: mysql_customer
+type: mysql
+host: ${MYSQL_CUSTOMER_HOST}
+port: ${MYSQL_CUSTOMER_PORT}
+database: ${MYSQL_CUSTOMER_DATABASE}
+user: ${MYSQL_CUSTOMER_USER}
+password: ${MYSQL_CUSTOMER_PASSWORD}
+---
+kind: tool
+name: check_business_connection
+type: postgres-sql
+source: pg_business
+description: Check the configured business database connection without changing data.
+statement: SELECT 1 AS ok
+---
+kind: tool
+name: check_customer_connection
+type: mysql-sql
+source: mysql_customer
+description: Check the configured customer database connection without changing data.
+statement: SELECT 1 AS ok
+---
+kind: group
+name: connection_checks
+description: Explicit connection checks; no business table access.
+tools:
+  - check_business_connection
+  - check_customer_connection
