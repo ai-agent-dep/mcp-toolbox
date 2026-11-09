@@ -92,6 +92,10 @@ There are 6 workflows in total, handling parallel deployments to both GitHub Pag
 
 ### Branching and Commits
 
+-   **Fork workflow:** In `ai-agent-dep/mcp-toolbox`, read and follow
+    [FORK_DEVELOPMENT.md](./FORK_DEVELOPMENT.md). Its branch naming and merge
+    rules take precedence over the upstream defaults below. Keep `main` as the
+    upstream tracking branch and target fork development PRs at `develop`.
 -   **Branch Naming:** `feat/`, `fix/`, `docs/`, `chore/` (e.g., `feat/add-gemini-md`).
 -   **Commit Messages:** [Conventional Commits](https://www.conventionalcommits.org/) format.
     -   Format: `<type>(<scope>): <description>`

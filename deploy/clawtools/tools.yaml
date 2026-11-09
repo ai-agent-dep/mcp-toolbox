@@ -1,0 +1,4 @@
+# Empty configuration: no databases, tools, prompts, or resources are connected.
+sources: {}
+tools: {}
+toolsets: {}

@@ -25,6 +25,10 @@ This project follows
 
 ## Contribution process
 
+For contributions to `ai-agent-dep/mcp-toolbox`, follow the
+[Fork development workflow](./FORK_DEVELOPMENT.md). In particular, upstream
+sync PRs must retain merge history rather than use the squash policy below.
+
 > [!NOTE]
 > New contributions should always include both unit and integration tests.
 

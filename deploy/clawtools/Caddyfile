@@ -1,0 +1,9 @@
+mcp-toolbox.clawtools.cc {
+    header Strict-Transport-Security "max-age=31536000"
+    header X-Content-Type-Options "nosniff"
+    @root path /
+    redir @root /ui/ 302
+    reverse_proxy 127.0.0.1:15000 {
+        flush_interval -1
+    }
+}

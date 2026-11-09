@@ -3,6 +3,13 @@
 This document provides instructions for setting up your development environment
 and contributing to the Toolbox project.
 
+For development in the `ai-agent-dep/mcp-toolbox` fork, follow the
+[Fork development workflow](./FORK_DEVELOPMENT.md) for branch rules, upstream
+synchronization, merge strategy, and release baselines.
+
+The Clawtools deployment configuration and operations record are in
+[deploy/clawtools/README.md](./deploy/clawtools/README.md).
+
 ## Prerequisites
 
 Before you begin, ensure you have the following:

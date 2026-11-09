@@ -1,0 +1,30 @@
+[Unit]
+Description=MCP Toolbox for Databases
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=mcp-toolbox
+Group=mcp-toolbox
+WorkingDirectory=/var/lib/mcp-toolbox
+ExecStart=/opt/mcp-toolbox/current --config /etc/mcp-toolbox/tools.yaml --address 127.0.0.1 --port 15000 --ui --allowed-hosts mcp-toolbox.clawtools.cc --allowed-origins https://mcp-toolbox.clawtools.cc --toolbox-url https://mcp-toolbox.clawtools.cc --disable-version-check --logging-format JSON
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+StateDirectory=mcp-toolbox
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
